@@ -3,7 +3,9 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 
 export const dynamic = 'force-dynamic';
 
-type CsvRow = string[];
+import ShareCodeBox from "./components/ShareCodeBox";
+import ChartArea from "./components/ChartArea";
+import { CsvRow, SortKey, TransformedRow } from "./components/types";
 
 function parseCsv(text: string): CsvRow[] {
   const rows: CsvRow[] = [];
@@ -216,13 +218,6 @@ export default function CodStatsPage() {
   const header = useMemo(() => (data && data.length ? data[0] : null), [data]);
   const rows = useMemo(() => (data && data.length ? data.slice(1) : []), [data]);
 
-  type TransformedRow = {
-    utc: string;
-    kills: number;
-    deaths: number;
-    skill: string;
-    kdRatio: number;
-  };
 
   const normalizedHeader = useMemo(() => {
     if (!header) return null;
@@ -271,7 +266,6 @@ export default function CodStatsPage() {
     });
   }, [rows, columnIndex, requiredColsPresent]);
 
-  type SortKey = "utc" | "kills" | "deaths" | "skill" | "kdRatio";
   const [sortKey, setSortKey] = useState<SortKey>("utc");
   const [sortDir, setSortDir] = useState<"asc" | "desc">("asc");
 
@@ -346,7 +340,8 @@ export default function CodStatsPage() {
    * - Left Y axis: Skill values (parsed to number when possible).
    * - Right Y axis: K/D Ratio.
    */
-  function ChartArea({ data }: { data: TransformedRow[]; baseFileName?: string | null }) {
+  /* moved to components/ChartArea.tsx */
+  function ChartArea_OLD({ data }: { data: TransformedRow[]; baseFileName?: string | null }) {
     // Ensure chronological order by UTC for the chart, independent of table sort
     const chron = useMemo(() => {
       const copy = data.slice();
@@ -630,7 +625,8 @@ export default function CodStatsPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, fileName, sortKey, sortDir]);
 
-  function ShareCodeBox({ code }: { code: string }) {
+  /* moved to components/ShareCodeBox.tsx */
+  function ShareCodeBox_OLD({ code }: { code: string }) {
     const [open, setOpen] = useState(false);
     return (
       <div className="mt-2 rounded-md border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 p-3">
@@ -697,7 +693,7 @@ export default function CodStatsPage() {
                   id="cod-csv"
                   ref={fileInputRef}
                   type="file"
-                  accept=".csv,text/csv"
+                  accept=".csv,text/csv,.html,text/html"
                   onChange={onFileChange}
                   className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                 />
