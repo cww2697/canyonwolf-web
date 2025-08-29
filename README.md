@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Canyon Wolf — Personal Site & Projects
 
-## Getting Started
+[![Deploy to Pages](https://github.com/cww2697/canyonwolf-web/actions/workflows/nextjs.yml/badge.svg)](https://github.com/cww2697/canyonwolf-web/actions/workflows/nextjs.yml)
 
-First, run the development server:
+A Next.js (App Router) site for Canyon Wolf — showcasing projects, experiments, and write‑ups. Notable tools include a Call of Duty Statistics Visualizer that lets you import your Activision SAR Multiplayer Statistics and view trends like Skill and K/D over time.
 
+## Goals
+- Provide a clean, fast personal website and home for projects.
+- Host small interactive tools (e.g., COD Stats) with a good UX (dark mode, responsive design).
+- Share code openly so others can learn or extend the tools.
+
+## Features
+- Next.js 15 App Router with React 19.
+- Tailwind CSS 4 for styling.
+- Fixed top navigation with project menu.
+- COD Stats tool:
+  - CSV import from Activision SAR “Multiplayer Statistics”.
+  - Interactive chart for Skill and K/D Ratio.
+  - Hover tooltip with UTC timestamp and values.
+  - Per-metric min/avg/max and best‑fit line with linear equation.
+  - Export filtered/sorted data as CSV.
+- Accessible, keyboard-friendly UI where possible.
+
+## Tech Stack
+- Next.js 15, React 19
+- TypeScript
+- Tailwind CSS 4
+- GitHub Actions (Deploy to Pages)
+
+## Getting Started (Local Development)
+Prereqs:
+- Node.js 20+
+- npm (or yarn/pnpm/bun)
+
+Install dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+  npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Run the dev server:
+```bash
+  npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Build for production:
+```bash
+  npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Start the production server (after build):
+```bash
+  npm run start
+```
 
-## Learn More
+## Project Structure
+- src/app — App Router pages and layout
+  - src/app/page.tsx — About page (home)
+  - src/app/projects/cod-stats — COD Stats tool (page + components)
+- src/components — Shared UI (e.g., TopNav)
+- public — Static assets
 
-To learn more about Next.js, take a look at the following resources:
+## Scripts
+- dev: next dev --turbopack
+- build: next build --turbopack
+- start: next start
+- lint: eslint
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## COD Stats CSV Notes
+Prepare a CSV from your Activision SAR export:
+- Open your SAR HTML export and find the “Multiplayer Statistics” table.
+- Copy the full table, including the header row, into Excel or Google Sheets.
+- Save or download as CSV.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Required columns include UTC timestamp, Kills, Deaths, and Skill. Extra columns are ignored.
 
-## Deploy on Vercel
+## Deployment
+This repo includes a GitHub Actions workflow to build and deploy to GitHub Pages. The badge above reflects the latest workflow status.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+All rights reserved. This project and its source code are protected by copyright law. For licensing inquiries or usage
+permissions beyond what is explicitly granted in specific project pages or repositories, please contact myself
+directly.
+
+## Repository
+GitHub: https://github.com/cww2697/canyonwolf-web

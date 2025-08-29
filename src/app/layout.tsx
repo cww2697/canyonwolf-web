@@ -29,8 +29,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <TopNav />
-        <div className="relative min-h-screen">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6 pt-16 pb-12">
+        <div className="relative min-h-screen pb-16">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 pt-16">
             <div className="rounded-2xl bg-white dark:bg-gray-900 ring-1 ring-black/5 dark:ring-white/10 shadow-sm backdrop-blur-0">
               {children}
             </div>
