@@ -70,9 +70,6 @@ export default function ChartArea({ data }: { data: TransformedRow[]; baseFileNa
     return d;
   };
 
-  const zeroLeftY = yLeft(0);
-  const zeroRightY = yRight(0);
-
   const [hoverIdx, setHoverIdx] = useState<number | null>(null);
   const [locked, setLocked] = useState<boolean>(false);
 
@@ -91,7 +88,7 @@ export default function ChartArea({ data }: { data: TransformedRow[]; baseFileNa
   const onClickOverlay = () => { if (hoverIdx === null) return; setLocked((l) => !l); };
 
   return (
-    <div className="w-full rounded-md border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-3">
+    <div className="w-full rounded-md border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800 p-3">
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-2">
           <div className="text-sm font-medium text-gray-800 dark:text-gray-200">Skill and K/D Ratio Over Time</div>
@@ -138,7 +135,7 @@ export default function ChartArea({ data }: { data: TransformedRow[]; baseFileNa
               )}
               {(() => {
                 const x = xForIndex(hoverIdx);
-                const boxW = 160; const boxH = 56; const pad = 8;
+                const boxW = 160; const boxH = 64; const pad = 8;
                 let bx = x + pad; if (bx + boxW > margin.left + innerW) bx = x - pad - boxW;
                 const by = Math.max(margin.top, Math.min(margin.top + innerH - boxH, yLeft(0) - boxH - 6));
                 const skillVal = parsedSkill[hoverIdx]; const kdVal = kdSeries[hoverIdx];
@@ -149,12 +146,12 @@ export default function ChartArea({ data }: { data: TransformedRow[]; baseFileNa
                     <rect x={bx} y={by} width={boxW} height={boxH} rx={6} ry={6} fill="#ffffff" stroke="#e5e7eb"/>
                     <text x={bx + 8} y={by + 16} className="fill-gray-900" fontSize={11} fontFamily={'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace'}>{chron[hoverIdx]?.utc || ''}</text>
                     <g>
-                      <rect x={bx + 8} y={by + 22} width={6} height={2} fill="#3b82f6"/>
-                      <text x={bx + 18} y={by + 24} dominantBaseline="middle" className="fill-gray-900" fontSize={11}>Skill: {Number.isFinite(skillVal) ? fmtSkill(skillVal) : '—'}</text>
+                      <rect x={bx + 8} y={by + 26} width={6} height={2} fill="#3b82f6"/>
+                      <text x={bx + 18} y={by + 28} dominantBaseline="middle" className="fill-gray-900" fontSize={11}>Skill: {Number.isFinite(skillVal) ? fmtSkill(skillVal) : '—'}</text>
                     </g>
                     <g>
-                      <rect x={bx + 8} y={by + 38} width={6} height={2} fill="#10b981"/>
-                      <text x={bx + 18} y={by + 40} dominantBaseline="middle" className="fill-gray-900" fontSize={11}>K/D: {Number.isFinite(kdVal) ? fmtKD(kdVal) : '—'}</text>
+                      <rect x={bx + 8} y={by + 44} width={6} height={2} fill="#10b981"/>
+                      <text x={bx + 18} y={by + 46} dominantBaseline="middle" className="fill-gray-900" fontSize={11}>K/D: {Number.isFinite(kdVal) ? fmtKD(kdVal) : '—'}</text>
                     </g>
                   </g>
                 );

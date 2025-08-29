@@ -74,6 +74,7 @@ function parseCsv(text: string): CsvRow[] {
 }
 
 export default function CodStatsPage() {
+  const [showInstructions, setShowInstructions] = useState<boolean>(false);
   const b64uEncode = (bin: Uint8Array) => {
     let str = '';
     for (let i = 0; i < bin.length; i++) str += String.fromCharCode(bin[i]);
@@ -390,14 +391,44 @@ export default function CodStatsPage() {
         {!data ? (
           <form onSubmit={onSubmit} className="space-y-4">
             <div>
+              {/* Instructions accordion */}
+              <div className="rounded-md border border-gray-200 dark:border-gray-800 mb-3 overflow-visible">
+                <button
+                  type="button"
+                  onClick={() => setShowInstructions((v)=>!v)}
+                  aria-expanded={showInstructions}
+                  aria-controls="csv-instructions-panel"
+                  className="w-full flex items-center justify-between gap-2 px-3 py-2 pr-2 text-left text-base md:text-lg font-semibold text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
+                >
+                  <span className="tracking-wide">Instructions</span>
+                  <span className="text-gray-600 dark:text-gray-300 w-5 h-5 grid place-items-center" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className={showInstructions ? "w-4 h-4 transform rotate-180 transition-transform duration-200" : "w-4 h-4 transform rotate-0 transition-transform duration-200"}>
+                      <path fillRule="evenodd" d="M1.646 5.146a.5.5 0 0 1 .708 0L8 .5l5.646 4.646a.5.5 0 1 1-.708.708L8 1.207 2.354 5.854a.5.5 0 1 1-.708-.708" />
+                    </svg>
+                  </span>
+                </button>
+                {showInstructions && (
+                  <div id="csv-instructions-panel" className="px-3 pb-3 text-sm text-gray-700 dark:text-gray-300">
+                    <div className="mt-2 mb-2 text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">Before you upload</div>
+                    <p className="mb-2">Create a simple CSV from your Activision data using the steps below. This helps the app read your matches correctly.</p>
+                    <ul className="list-disc pl-5 space-y-1">
+                      <li><span className="font-semibold">Find the right table:</span> Open your Activision SAR export (HTML) and locate the <span className="font-semibold">Multiplayer Statistics</span> table.</li>
+                      <li><span className="font-semibold">Copy to a spreadsheet:</span> Select the entire table, <em>including the header row</em>, and paste it into Excel or Google Sheets.</li>
+                      <li><span className="font-semibold">Save as CSV:</span> Export or download that sheet as a CSV file.</li>
+                    </ul>
+                  </div>
+                )}
+              </div>
               <div className="relative rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-700 hover:border-orange-500 dark:hover:border-orange-500 transition-colors p-6">
+                <p id="csv-instructions" className="sr-only">Prepare your CSV by copying the Multiplayer Statistics table from your Activision SAR HTML export into Excel or Google Sheets (including the header row), then save or download it as a CSV file.</p>
                 <input
                   id="cod-csv"
                   ref={fileInputRef}
                   type="file"
                   accept=".csv,text/csv"
                   onChange={onFileChange}
-                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                  aria-describedby="csv-instructions"
+                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
                 />
                 <div className="text-center">
                   <svg className="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
