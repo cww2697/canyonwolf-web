@@ -8,12 +8,16 @@ vi.mock('next/font/google', () => ({
   Geist_Mono: () => ({ variable: 'geist-mono' })
 }));
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 vi.mock('next/link', () => ({ __esModule: true, default: ({ href, children, ...rest }: any) => <a href={href as string} {...rest}>{children}</a> }));
 
 function renderBodyChildren(children: React.ReactNode) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const tree = (RootLayout as any)({ children }) as React.ReactElement;
-  const bodyEl = (tree.props as any).children as React.ReactElement; // <body>
-  const inner = (bodyEl.props as any).children as React.ReactNode;   // TopNav + wrapper
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const bodyEl = (tree.props as any).children as React.ReactElement;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const inner = (bodyEl.props as any).children as React.ReactNode;
   return render(<>{inner}</>, { baseElement: document.body });
 }
 
