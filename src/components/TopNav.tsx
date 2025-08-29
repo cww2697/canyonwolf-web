@@ -44,15 +44,13 @@ export default function TopNav() {
                 >
                   <ul className="py-1">
                     <li>
-                      <Link
-                        href="/projects/oovify"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
-                        onClick={() => setOpen(false)}
-                      >
-                        OOvify
-                      </Link>
+                        <Link
+                            href="/projects/oovify"
+                            className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                            onClick={() => setOpen(false)}
+                        >
+                            OOvify
+                        </Link>
                     </li>
                     <li>
                       <Link
