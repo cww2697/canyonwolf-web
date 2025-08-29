@@ -64,6 +64,8 @@ Start the production server (after build):
 - build: next build --turbopack
 - start: next start
 - lint: eslint
+- test: vitest run
+- test:watch: vitest
 
 ## COD Stats CSV Notes
 Prepare a CSV from your Activision SAR export:
