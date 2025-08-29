@@ -8,8 +8,8 @@ export const metadata = {
 export default function OovifyPage() {
   return (
     <main className="p-4 sm:p-6">
-      <div className="p-4 sm:p-6 space-y-4">
-          <div className="w-full aspect-[16/9] rounded-lg overflow-hidden">
+      <div className="space-y-4">
+          <div className="w-full sm:aspect-[16/9] h-[50vh] sm:h-auto rounded-lg overflow-hidden">
               <iframe 
                   title="OOvify"
                   src="https://cww2697.github.io/OOvify/"
