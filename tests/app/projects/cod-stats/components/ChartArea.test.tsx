@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import ChartArea from '../../../../../src/app/projects/cod-stats/components/ChartArea';
-import type { TransformedRow } from '../../../../../src/app/projects/cod-stats/components/types';
+import type { TransformedRow } from '@/app/projects/cod-stats/components/types';
 import {describe, test, expect } from "vitest";
 
 function makeRow(utc: string, skill: string | number, kdRatio: number, kills = 0, deaths = 0): TransformedRow {
