@@ -13,8 +13,11 @@ export default function SparkLauncherPage() {
     <main className="p-4 sm:p-6">
       <div className="max-w-4xl mx-auto space-y-6">
         <header className="space-y-2">
-          <h1 className="text-2xl sm:text-3xl font-semibold">Spark Launcher</h1>
-          <p className="text-gray-600 dark:text-gray-300">
+            <div className="flex items-center gap-2">
+                <h1 className="text-2xl sm:text-3xl font-semibold">Spark Launcher</h1>
+                <span className="px-2 py-0.5 text-xs font-medium text-white bg-orange-500 rounded">BETA</span>
+            </div>
+            <p className="text-gray-600 dark:text-gray-300">
               Spark Launcher brings your PC game libraries together in one place. Browse cover art, see key details, and launch quickly — with simple setup and a friendly design.
           </p>
         </header>
