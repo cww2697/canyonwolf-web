@@ -32,7 +32,9 @@ export default function SparkLauncherPage() {
           >
             {images.map((src, idx) => (
               <div key={src} className="bg-black">
-                <img src={src} alt={`Spark Launcher screenshot ${idx + 1}`} className="object-contain max-h-[70vh] w-full" />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={src} alt={`Spark Launcher screenshot ${idx + 1}`}
+                       className="object-contain max-h-[70vh] w-full"/>
               </div>
             ))}
           </Carousel>
@@ -134,7 +136,7 @@ export default function SparkLauncherPage() {
               endorsement by the respective rights holders is implied.
             </p>
             <p>
-              This application is provided "AS IS" under the terms of the GNU General Public License, version 2.0
+              This application is provided &quot;AS IS&quot; under the terms of the GNU General Public License, version 2.0
               (GPL‑2.0), without warranties or conditions of any kind, either express or implied. For license details,
               please see the GPL‑2.0 text at
               {" "}
