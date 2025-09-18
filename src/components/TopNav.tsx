@@ -61,6 +61,15 @@ export default function TopNav() {
                         Call of Duty Statistics Visualizer
                       </Link>
                     </li>
+                    <li>
+                      <Link
+                        href="/projects/spark-launcher"
+                        className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                        onClick={() => setOpen(false)}
+                      >
+                        Spark Launcher
+                      </Link>
+                    </li>
                   </ul>
                 </div>
               )}
