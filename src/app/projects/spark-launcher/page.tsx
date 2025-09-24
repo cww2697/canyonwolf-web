@@ -170,7 +170,7 @@ export default function SparkLauncherPage() {
           <section className="rounded-lg ring-1 ring-black/5 dark:ring-white/10 bg-white/70 dark:bg-gray-900/40 p-4">
               <h3 className="text-lg font-medium mb-2">Contributing</h3>
               <div className="space-y-4 text-gray-700 dark:text-gray-300">
-                  <p>We welcome contributions! Here's how you can help:</p>
+                  <p>We welcome contributions! Here&apos;s how you can help:</p>
 
                   <div className="space-y-4">
                       <div>
