@@ -5,8 +5,12 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export default function SparkLauncherPage() {
   const images = [
-    "/img/SparkLauncher/Home.png",
-    "/img/SparkLauncher/Library.png"
+      "/img/SparkLauncher/home_dark.png",
+      "/img/SparkLauncher/home_light.png",
+      "/img/SparkLauncher/library_dark.png",
+      "/img/SparkLauncher/settings_1.png",
+      "/img/SparkLauncher/settings_2.png",
+      "/img/SparkLauncher/settings_3.png",
   ];
 
   return (
@@ -51,12 +55,13 @@ export default function SparkLauncherPage() {
             <div className="rounded-lg ring-1 ring-black/5 dark:ring-white/10 bg-white/70 dark:bg-gray-900/40 p-4">
               <h3 id="spark-what" className="text-lg font-medium mb-2">What it does</h3>
               <ul className="list-disc pl-5 space-y-1 text-gray-700 dark:text-gray-300">
-                <li>Puts your games from these PC launchers in one library:
+                <li>Combine all your libraries into one place:
                   <ul className="list-disc pl-5 mt-1 space-y-1">
                     <li>Steam</li>
                     <li>EA app (formerly Origin)</li>
                     <li>Battle.net</li>
                     <li>Ubisoft Connect</li>
+                    <li>Custom Game Libraries</li>
                   </ul>
                 </li>
                 <li>Shows box art and key details at a glance.</li>
@@ -70,31 +75,27 @@ export default function SparkLauncherPage() {
               </ul>
             </div>
 
-            {/* Current status and limitations */}
-            <div className="rounded-lg ring-1 ring-black/5 dark:ring-white/10 bg-white/70 dark:bg-gray-900/40 p-4">
-              <h3 className="text-lg font-medium mb-2">Current status and limitations</h3>
-              <ul className="list-disc pl-5 space-y-1 text-gray-700 dark:text-gray-300">
-                <li>Desktop app only for now. Installer is currently available for Windows.</li>
-                <li>The theme picker currently only has a default dark and light theme.</li>
-                <li>Finding your games works best when your store folders are set correctly in Settings.</li>
-              </ul>
-            </div>
-          </div>
-
-          {/* App layout */}
-          <div className="rounded-lg ring-1 ring-black/5 dark:ring-white/10 bg-white/70 dark:bg-gray-900/40 p-4">
-            <h3 className="text-lg font-medium mb-2">App layout</h3>
-            <ul className="space-y-2 text-gray-700 dark:text-gray-300">
-              <li>
-                <span className="font-medium">Home:</span> Rows of recommendations so you can jump back into favorites quickly.
-              </li>
-              <li>
-                <span className="font-medium">Library:</span> Everything Spark Launcher finds, with cover art when available.
-              </li>
-              <li>
-                <span className="font-medium">Settings:</span> Pick a theme, set library folders, add IGDB details, and run maintenance tasks.
-              </li>
-            </ul>
+            {/* App Layout */}
+              <div
+                  className="rounded-lg ring-1 ring-black/5 dark:ring-white/10 bg-white/70 dark:bg-gray-900/40 p-4 flex flex-col h-full">
+                  <div className="flex-grow">
+                      <h3 className="text-lg font-medium mb-2">App layout</h3>
+                      <ul className="space-y-4 text-gray-700 dark:text-gray-300">
+                          <li className="flex flex-col">
+                              <h4 className="font-medium text-lg mb-1">Home</h4>
+                              <p>Rows of recommendations so you can jump back into favorites quickly.</p>
+                          </li>
+                          <li className="flex flex-col">
+                              <h4 className="font-medium text-lg mb-1">Library</h4>
+                              <p>Everything Spark Launcher finds, with cover art when available, fully searchable.</p>
+                          </li>
+                          <li className="flex flex-col">
+                              <h4 className="font-medium text-lg mb-1">Settings</h4>
+                              <p>Pick a theme, set library folders, add IGDB details, and run maintenance tasks.</p>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
           </div>
 
           {/* System requirements & Roadmap */}
@@ -118,7 +119,6 @@ export default function SparkLauncherPage() {
               <ul className="list-disc pl-5 space-y-1 text-gray-700 dark:text-gray-300">
                 <li>Community themes</li>
                 <li>Custom app launch options</li>
-                <li>Library search</li>
                 <li>Custom home layout</li>
                 <li>Favorite games in your library</li>
                 <li>More ways to sort your library</li>
@@ -128,8 +128,77 @@ export default function SparkLauncherPage() {
           </div>
         </section>
 
-        {/* Legal disclaimer */}
-        <section className="rounded-lg ring-1 ring-black/5 dark:ring-white/10 bg-white/70 dark:bg-gray-900/40 p-4">
+          {/* Installation */}
+          <section className="rounded-lg ring-1 ring-black/5 dark:ring-white/10 bg-white/70 dark:bg-gray-900/40 p-4">
+              <div className="flex-grow">
+                  <h3 className="text-lg font-medium mb-2">Installation</h3>
+                  <div className="space-y-4 text-gray-700 dark:text-gray-300">
+                      <div
+                          className="p-4 mb-4 text-amber-800 dark:text-amber-300 bg-amber-50 dark:bg-amber-900/30 border-l-4 border-amber-500 rounded">
+                          <p className="font-medium">Important</p>
+                          <p>Make sure you have JDK 21 or higher installed before building from source.</p>
+                      </div>
+                      <p>To build Spark Launcher from source:</p>
+
+                      <ol className="list-decimal pl-5 space-y-2">
+                          <li>Download the latest release source code from the GitHub releases page</li>
+                          <li>Extract the downloaded archive to your preferred location</li>
+                          <li>Open a terminal/command prompt in the extracted directory</li>
+                          <li>Run the Gradle build command:
+                              <pre className="mt-2 p-2 bg-gray-100 dark:bg-gray-800 rounded font-mono text-sm">
+                  ./gradlew composeApp:createReleaseDistributable
+                </pre>
+                          </li>
+                      </ol>
+                      <div className="mt-4">
+                          <p className="font-medium mb-2">Custom build directory</p>
+                          <p>To specify a custom output directory, use the following Gradle property:</p>
+                          <pre className="mt-2 p-2 bg-gray-100 dark:bg-gray-800 rounded font-mono text-sm overflow-x-auto">
+                ./gradlew composeApp:createReleaseDistributable -PbuildDir=path/to/custom/directory
+              </pre>
+                      </div>
+                      <p>After successful compilation, you&apos;ll find the application in the specified build
+                          directory (or the default build output location if not specified).</p>
+                  </div>
+              </div>
+              <p className="text-gray-600 dark:text-gray-400 text-sm mt-4 italic">*Pre-release Note: While MSI
+                  installers may be provided for some releases, they are not guaranteed for all pre-release versions. Building from
+                  source is recommended for the most reliable installation.</p>
+          </section>
+
+          {/* Contributing */}
+          <section className="rounded-lg ring-1 ring-black/5 dark:ring-white/10 bg-white/70 dark:bg-gray-900/40 p-4">
+              <h3 className="text-lg font-medium mb-2">Contributing</h3>
+              <div className="space-y-4 text-gray-700 dark:text-gray-300">
+                  <p>We welcome contributions! Here's how you can help:</p>
+
+                  <div className="space-y-4">
+                      <div>
+                          <h4 className="font-medium mb-2">Development setup</h4>
+                          <ol className="list-decimal pl-5 space-y-2">
+                              <li>Fork the repository</li>
+                              <li>Clone your fork locally</li>
+                              <li>Set up the development environment (JDK 21+)</li>
+                              <li>Create a new branch for your feature</li>
+                          </ol>
+                      </div>
+
+                      <div>
+                          <h4 className="font-medium mb-2">Guidelines</h4>
+                          <ul className="list-disc pl-5 space-y-1">
+                              <li>Follow the existing code style and conventions</li>
+                              <li>Write clear commit messages</li>
+                              <li>Add tests for new features</li>
+                              <li>Update documentation as needed</li>
+                              <li>Submit a pull request with a description of your changes</li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </section>
+
+          {/* Legal disclaimer */}
+          <section className="rounded-lg ring-1 ring-black/5 dark:ring-white/10 bg-white/70 dark:bg-gray-900/40 p-4">
           <h3 className="text-lg font-medium mb-2">Legal</h3>
           <div className="space-y-2 text-gray-700 dark:text-gray-300 text-sm">
             <p>
