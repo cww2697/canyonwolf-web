@@ -145,8 +145,9 @@ export default function SparkLauncherPage() {
                           <li>Extract the downloaded archive to your preferred location</li>
                           <li>Open a terminal/command prompt in the extracted directory</li>
                           <li>Run the Gradle build command:
-                              <pre className="mt-2 p-2 bg-gray-100 dark:bg-gray-800 rounded font-mono text-sm">
-                  ./gradlew composeApp:createReleaseDistributable
+                              <pre
+                                  className="mt-2 p-2 bg-gray-100 dark:bg-gray-800 rounded font-mono text-sm whitespace-pre overflow-x-auto">
+                ./gradlew composeApp:createReleaseDistributable
                 </pre>
                           </li>
                       </ol>
