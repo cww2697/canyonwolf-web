@@ -71,6 +71,16 @@ export default function TopNav() {
                           className="ml-2 inline-flex items-center rounded-md bg-orange-50 dark:bg-orange-400/10 px-2 py-1 text-xs font-medium text-orange-700 dark:text-orange-400 ring-1 ring-inset ring-orange-600/10 dark:ring-orange-400/20">BETA</span>
                       </Link>
                     </li>
+                    <li>
+                      <Link
+                          href="/projects/terravista"
+                          className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 flex items-center"
+                          onClick={() => setOpen(false)}
+                      >
+                        TerraVista <span
+                          className="ml-2 inline-flex items-center rounded-md bg-green-50 dark:bg-green-400/10 px-2 py-1 text-xs font-medium text-green-700 dark:text-green-400 ring-1 ring-inset ring-green-600/10 dark:ring-green-400/20">COMING SOON</span>
+                      </Link>
+                    </li>
                   </ul>
                 </div>
               )}
