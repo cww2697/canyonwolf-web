@@ -63,10 +63,9 @@ export default function SparkLauncherPage() {
             <div className="rounded-lg ring-1 ring-black/5 dark:ring-white/10 bg-white/70 dark:bg-gray-900/40 p-4">
               <h3 className="text-lg font-medium mb-2">System requirements</h3>
               <ul className="list-disc pl-5 space-y-1 text-gray-700 dark:text-gray-300">
-                <li>Windows 11</li>
                 <li>Java 21+</li>
                 <li>1 GB of disk space</li>
-                <li>4 GB of RAM</li>
+                <li>2 GB of RAM</li>
                 <li>Internet connection</li>
               </ul>
             </div>
