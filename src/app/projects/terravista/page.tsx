@@ -1,12 +1,13 @@
 "use client";
 import React from "react";
-// import { Carousel } from "react-responsive-carousel";
+import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export default function SparkLauncherPage() {
-  /*const images = [
-
-  ];*/
+  const images = [
+      "/img/TerraVista/scenery.png",
+      "/img/TerraVista/aircraft.png",
+  ];
 
   return (
     <main className="p-4 sm:p-6">
@@ -22,24 +23,24 @@ export default function SparkLauncherPage() {
         </header>
 
         <section aria-label="TerraVista screenshots" className="rounded-lg overflow-hidden ring-1 ring-black/5 dark:ring-white/10 bg-white/60 dark:bg-gray-900/40">
-          {/*<Carousel*/}
-          {/*  showArrows*/}
-          {/*  showStatus={false}*/}
-          {/*  showThumbs={false}*/}
-          {/*  infiniteLoop*/}
-          {/*  emulateTouch*/}
-          {/*  swipeable*/}
-          {/*  autoPlay={false}*/}
-          {/*  className="w-full"*/}
-          {/*>*/}
-          {/*  {images.map((src, idx) => (*/}
-          {/*    <div key={src} className="bg-black">*/}
-          {/*        /!* eslint-disable-next-line @next/next/no-img-element *!/*/}
-          {/*        <img src={src} alt={`TerraVista screenshot ${idx + 1}`}*/}
-          {/*             className="object-contain max-h-[70vh] w-full"/>*/}
-          {/*    </div>*/}
-          {/*  ))}*/}
-          {/*</Carousel>*/}
+          <Carousel
+            showArrows
+            showStatus={false}
+            showThumbs={false}
+            infiniteLoop
+            emulateTouch
+            swipeable
+            autoPlay={false}
+            className="w-full"
+          >
+            {images.map((src, idx) => (
+              <div key={src} className="bg-black">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={src} alt={`TerraVista screenshot ${idx + 1}`}
+                       className="object-contain max-h-[70vh] w-full"/>
+              </div>
+            ))}
+          </Carousel>
         </section>
 
         {/* Details */}
