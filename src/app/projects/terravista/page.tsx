@@ -18,7 +18,9 @@ export default function SparkLauncherPage() {
                 <span className="px-2 py-0.5 text-xs font-medium text-white bg-green-500 rounded">Coming Soon</span>
             </div>
             <p className="text-gray-600 dark:text-gray-300">
-              TerraVista is designed to make managing complex X-Plane scenery libraries a breeze, letting you spend more time enjoying the simworld and less time looking at a text editor.
+                TerraVista is a powerful X-Plane addon manager and organizer designed to simplify managing complex
+                X-Plane scenery libraries. Spend more time flying in your simulator and less
+                time manually editing configuration files with this intuitive scenery management tool.
           </p>
         </header>
 
@@ -51,10 +53,20 @@ export default function SparkLauncherPage() {
             <div className="rounded-lg ring-1 ring-black/5 dark:ring-white/10 bg-white/70 dark:bg-gray-900/40 p-4">
               <h3 id="spark-what" className="text-lg font-medium mb-2">What it does</h3>
               <ul className="list-disc pl-5 space-y-1 text-gray-700 dark:text-gray-300">
-                <li>Simple to use scenery organizer and manager to enable or disable sceneries.</li>
-                <li>Directly edit scenery_packs.ini while also being able to review selected items in a file tree.</li>
-                <li>Supports directly editing scenery_packs.ini for X-Plane 11 or X-Plane 12 with a powerful built-in text editor supporting drag and drop for reordering scenery packs.</li>
-                <li>Lightweight utility written in Java and built to support Windows, Mac, or Linux.</li>
+                  <li>X-Plane scenery manager with intuitive organizer interface to enable or disable custom scenery
+                      packs effortlessly.
+                  </li>
+                  <li>Edit X-Plane scenery_packs.ini configuration file directly with visual file tree navigation.
+                  </li>
+                  <li>Advanced X-Plane scenery pack editor with drag-and-drop reordering and built-in text editor for
+                      scenery_packs.ini management.
+                  </li>
+                  <li>Cross-platform X-Plane utility supporting Windows, macOS, and Linux - lightweight Java-based
+                      flight simulator addon tool.
+                  </li>
+                  <li>X-Plane aircraft livery manager for organizing and customizing flight simulator skins and aircraft
+                      paintwork.
+                  </li>
               </ul>
             </div>
           </div>
