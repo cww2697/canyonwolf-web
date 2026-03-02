@@ -41,7 +41,7 @@ export default function TopNav() {
               >
                 <div className="p-2">
                   {[
-                    { name: "OOvify", href: "/projects/oovify", desc: "Interactive media tool", tag: "" },
+                    { name: "OOvify", href: "/projects/oovify", desc: "Interactive text generation tool", tag: "" },
                     { name: "COD Stats", href: "/projects/cod-stats", desc: "Performance visualizer", tag: "" },
                     { name: "Spark Launcher", href: "/projects/spark-launcher", desc: "Modern game library", tag: "BETA", tagColor: "bg-primary/20 text-primary" },
                     { name: "TerraVista", href: "/projects/terravista", desc: "X-Plane addon manager", tag: "COMING SOON", tagColor: "bg-green-500/20 text-green-500" },
