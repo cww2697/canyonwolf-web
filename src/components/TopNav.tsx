@@ -6,85 +6,66 @@ export default function TopNav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-[9999] bg-white/70 dark:bg-gray-900/60 backdrop-blur-sm supports-[backdrop-filter]:bg-white/60 ring-1 ring-black/5 dark:ring-white/10">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="h-14 flex items-center justify-between">
-          <Link href="/" className="text-lg font-semibold hover:text-orange-600 transition-colors">
-            Canyon Wolf
+    <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-[9999] w-[95%] max-w-5xl">
+      <div className="glass rounded-2xl px-8 py-4 flex items-center justify-between transition-all duration-300">
+        <Link href="/" className="text-2xl font-black tracking-tighter hover:text-primary transition-all flex items-center gap-2 group">
+          <span className="text-primary group-hover:scale-110 transition-transform">C</span>
+          <span className="text-secondary group-hover:scale-110 group-hover:translate-x-0.5 transition-transform">W</span>
+        </Link>
+        
+        <div className="flex items-center gap-2 sm:gap-6">
+          <Link href="/" className="px-4 py-2 text-sm font-bold opacity-70 hover:opacity-100 hover:text-primary transition-all rounded-xl hover:bg-primary/5">
+            Home
           </Link>
-          <div className="flex items-center gap-6 relative">
-            <Link href="/" className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 transition-colors inline-flex items-center leading-none py-2">
-              About
-            </Link>
-
-            <div className="relative">
-              <button
-                type="button"
-                className="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 transition-colors inline-flex items-center gap-1 leading-none align-middle py-2"
-                aria-haspopup="menu"
-                aria-expanded={open}
-                onClick={() => setOpen((v) => !v)}
-                onBlur={() => setTimeout(() => setOpen(false), 150)}
+          
+          <div className="relative group/dropdown">
+            <button
+              type="button"
+              className={`px-4 py-2 text-sm font-bold opacity-70 hover:opacity-100 hover:text-primary transition-all flex items-center gap-1.5 rounded-xl hover:bg-primary/5 ${open ? "opacity-100 text-primary bg-primary/5" : ""}`}
+              onClick={() => setOpen((v) => !v)}
+              onBlur={() => setTimeout(() => setOpen(false), 200)}
+            >
+              Projects
+              <svg
+                className={`h-4 w-4 transition-transform duration-300 ${open ? "rotate-180" : "rotate-0"}`}
+                viewBox="0 0 20 20"
+                fill="currentColor"
               >
-                Projects
-                <svg
-                  className={`h-4 w-4 transition-transform ${open ? "rotate-180" : "rotate-0"} self-center` + ``}
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clipRule="evenodd" />
-                </svg>
-              </button>
+                <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clipRule="evenodd" />
+              </svg>
+            </button>
 
-              {open && (
-                <div
-                  role="menu"
-                  className="absolute right-0 mt-2 w-64 rounded-md bg-white dark:bg-gray-900 ring-1 ring-black/5 dark:ring-white/10 shadow-lg focus:outline-none z-[10000]"
-                >
-                  <ul className="py-1">
-                    <li>
-                        <Link
-                            href="/projects/oovify"
-                            className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
-                            onClick={() => setOpen(false)}
-                        >
-                            OOvify
-                        </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/projects/cod-stats"
-                        className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
-                        onClick={() => setOpen(false)}
-                      >
-                        Call of Duty Statistics Visualizer
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/projects/spark-launcher"
-                        className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 flex items-center"
-                        onClick={() => setOpen(false)}
-                      >
-                          Spark Launcher <span
-                          className="ml-2 inline-flex items-center rounded-md bg-orange-50 dark:bg-orange-400/10 px-2 py-1 text-xs font-medium text-orange-700 dark:text-orange-400 ring-1 ring-inset ring-orange-600/10 dark:ring-orange-400/20">BETA</span>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                          href="/projects/terravista"
-                          className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 flex items-center"
-                          onClick={() => setOpen(false)}
-                      >
-                        TerraVista <span
-                          className="ml-2 inline-flex items-center rounded-md bg-green-50 dark:bg-green-400/10 px-2 py-1 text-xs font-medium text-green-700 dark:text-green-400 ring-1 ring-inset ring-green-600/10 dark:ring-green-400/20">COMING SOON</span>
-                      </Link>
-                    </li>
-                  </ul>
+            {open && (
+              <div
+                className="absolute right-0 mt-3 w-72 glass rounded-2xl overflow-hidden shadow-2xl animate-in fade-in slide-in-from-top-3 duration-300"
+              >
+                <div className="p-2">
+                  {[
+                    { name: "OOvify", href: "/projects/oovify", desc: "Interactive media tool", tag: "" },
+                    { name: "COD Stats", href: "/projects/cod-stats", desc: "Performance visualizer", tag: "" },
+                    { name: "Spark Launcher", href: "/projects/spark-launcher", desc: "Modern game library", tag: "BETA", tagColor: "bg-primary/20 text-primary" },
+                    { name: "TerraVista", href: "/projects/terravista", desc: "X-Plane addon manager", tag: "COMING SOON", tagColor: "bg-green-500/20 text-green-500" },
+                  ].map((project) => (
+                    <Link
+                      key={project.href}
+                      href={project.href}
+                      className="flex items-center justify-between px-4 py-3 rounded-xl hover:bg-primary/10 transition-all group/item"
+                      onClick={() => setOpen(false)}
+                    >
+                      <div className="flex flex-col">
+                        <span className="text-sm font-bold group-hover/item:text-primary transition-colors">{project.name}</span>
+                        <span className="text-[11px] opacity-50 font-medium">{project.desc}</span>
+                      </div>
+                      {project.tag && (
+                        <span className={`text-[10px] px-2 py-0.5 rounded-lg font-black tracking-wider ${project.tagColor}`}>
+                          {project.tag}
+                        </span>
+                      )}
+                    </Link>
+                  ))}
                 </div>
-              )}
-            </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

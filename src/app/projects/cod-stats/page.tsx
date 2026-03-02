@@ -379,100 +379,104 @@ export default function CodStatsPage() {
 
 
   return (
-    <main className="p-4 sm:p-6">
-      <div className="space-y-6 max-w-5xl mx-auto">
-        <header className="text-center space-y-2">
-          <h1 className="text-2xl sm:text-3xl font-bold">Call of Duty Statistics Visualizer</h1>
-          {!data && (
-            <p className="text-sm text-gray-600 dark:text-gray-400">Upload a CSV file to get started.</p>
-          )}
-        </header>
+    <main className="p-6 sm:p-10">
+      <div className="space-y-12 max-w-5xl mx-auto">
+          <div className="text-center space-y-4">
+            <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-primary">COD Stats</h1>
+            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
+              Visualize your Call of Duty performance. Upload your Activision data export to see trends in K/D, kills, and skill rating.
+            </p>
+          </div>
 
         {!data ? (
-          <form onSubmit={onSubmit} className="space-y-4">
-            <div>
+          <form onSubmit={onSubmit} className="space-y-6">
+            <div className="grid gap-6">
               {/* Instructions accordion */}
-              <div className="rounded-md border border-gray-200 dark:border-gray-800 mb-3 overflow-visible">
+              <div className="glass rounded-2xl overflow-hidden transition-all duration-300">
                 <button
                   type="button"
                   onClick={() => setShowInstructions((v)=>!v)}
                   aria-expanded={showInstructions}
                   aria-controls="csv-instructions-panel"
-                  className="w-full flex items-center justify-between gap-2 px-3 py-2 pr-2 text-left text-base md:text-lg font-semibold text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
+                  className="w-full flex items-center justify-between gap-2 px-6 py-4 text-left text-lg font-bold text-gray-900 dark:text-gray-100 hover:bg-primary/5 transition-colors"
                 >
-                  <span className="tracking-wide">Instructions</span>
+                  <span className="tracking-wide flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    Instructions
+                  </span>
                   <span className="text-gray-600 dark:text-gray-300 w-5 h-5 grid place-items-center" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className={showInstructions ? "w-4 h-4 transform rotate-180 transition-transform duration-200" : "w-4 h-4 transform rotate-0 transition-transform duration-200"}>
-                      <path fillRule="evenodd" d="M1.646 5.146a.5.5 0 0 1 .708 0L8 .5l5.646 4.646a.5.5 0 1 1-.708.708L8 1.207 2.354 5.854a.5.5 0 1 1-.708-.708" />
-                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={showInstructions ? "transform rotate-180 transition-transform duration-300" : "transform rotate-0 transition-transform duration-300"}><polyline points="6 9 12 15 18 9"></polyline></svg>
                   </span>
                 </button>
                 {showInstructions && (
-                  <div id="csv-instructions-panel" className="px-3 pb-3 text-sm text-gray-700 dark:text-gray-300">
-                    <div className="mt-2 mb-2 text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">Before you upload</div>
-                    <p className="mb-2">Create a simple CSV from your Activision data using the steps below. This helps the app read your matches correctly.</p>
-                    <ul className="list-disc pl-5 space-y-1">
-                      <li><span className="font-semibold">Find the right table:</span> Open your Activision SAR export (HTML) and locate the <span className="font-semibold">Multiplayer Statistics</span> table.</li>
-                      <li><span className="font-semibold">Copy to a spreadsheet:</span> Select the entire table, <em>including the header row</em>, and paste it into Excel or Google Sheets.</li>
-                      <li><span className="font-semibold">Save as CSV:</span> Export or download that sheet as a CSV file.</li>
+                  <div id="csv-instructions-panel" className="px-6 pb-6 text-sm text-gray-700 dark:text-gray-300 animate-in fade-in slide-in-from-top-2">
+                    <div className="mt-2 mb-4 text-xs font-bold uppercase tracking-widest text-primary">Before you upload</div>
+                    <p className="mb-4 leading-relaxed">Create a simple CSV from your Activision data using the steps below. This helps the app read your matches correctly.</p>
+                    <ul className="space-y-3">
+                      <li className="flex gap-3"><span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/20 text-primary grid place-items-center text-xs font-bold">1</span> <span>Open your Activision SAR export (HTML) and locate the <span className="font-bold text-secondary">Multiplayer Statistics</span> table.</span></li>
+                      <li className="flex gap-3"><span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/20 text-primary grid place-items-center text-xs font-bold">2</span> <span>Select the entire table, <em>including the header row</em>, and paste it into Excel or Google Sheets.</span></li>
+                      <li className="flex gap-3"><span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/20 text-primary grid place-items-center text-xs font-bold">3</span> <span>Export or download that sheet as a <span className="font-bold text-secondary">CSV file</span>.</span></li>
                     </ul>
                   </div>
                 )}
               </div>
-              <div className="relative rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-700 hover:border-orange-500 dark:hover:border-orange-500 transition-colors p-6">
-                <p id="csv-instructions" className="sr-only">Prepare your CSV by copying the Multiplayer Statistics table from your Activision SAR HTML export into Excel or Google Sheets (including the header row), then save or download it as a CSV file.</p>
+
+              <div className="relative rounded-2xl border-2 border-dashed border-primary/30 hover:border-primary/60 transition-colors p-10 bg-primary/5 group">
                 <input
                   id="cod-csv"
                   ref={fileInputRef}
                   type="file"
                   accept=".csv,text/csv"
                   onChange={onFileChange}
-                  aria-describedby="csv-instructions"
                   className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
                 />
-                <div className="text-center">
-                  <svg className="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
-                    <path d="M28 8H12a4 4 0 00-4 4v20m0 0v4a4 4 0 004 4h20a4 4 0 004-4V28m-4-4h4v-8m0 0v-4a4 4 0 00-4-4h-4m4 4l-8-8-8 8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                  <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                <div className="text-center space-y-4">
+                  <div className="mx-auto w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                  </div>
+                  <p className="text-lg font-semibold text-gray-700 dark:text-gray-200">
                     {fileName ? fileName : "Drop your CSV file here, or click to select"}
                   </p>
+                  <p className="text-xs text-gray-500 uppercase tracking-widest">CSV files only</p>
                 </div>
               </div>
-              {(fileError) && (
-                <p className="mt-2 text-sm text-orange-600 dark:text-orange-400">{fileError}</p>
+              
+              {fileError && (
+                <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-500 text-sm font-medium flex items-center gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                  {fileError}
+                </div>
               )}
             </div>
 
-          <div className="rounded-md border border-gray-200 dark:border-gray-800 p-3 mt-4">
-            <div className="text-sm font-medium mb-2 text-gray-800 dark:text-gray-200">Paste a share code to load data (optional)</div>
-            <div className="flex flex-col sm:flex-row gap-2">
+          <div className="glass rounded-2xl p-6 space-y-4">
+            <div className="text-sm font-bold uppercase tracking-widest text-secondary">Paste a share code (optional)</div>
+            <div className="flex flex-col sm:flex-row gap-3">
               <input
                 type="text"
                 value={hashInput}
                 onChange={(e)=> setHashInput(e.target.value)}
-                placeholder="Share Code"
-                className="flex-1 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                placeholder="Enter share code..."
+                className="flex-1 rounded-xl border border-primary/20 bg-white/80 dark:bg-black/40 text-gray-900 dark:text-gray-100 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary transition-all"
               />
-          </div>
-          {codeError && (
-            <p className="mt-2 text-sm text-orange-600 dark:text-orange-400">{codeError}</p>
-          )}
+            </div>
+            {codeError && (
+              <p className="text-sm text-red-500 font-medium">{codeError}</p>
+            )}
           </div>
 
-            <div className="flex gap-3 justify-center">
+            <div className="flex gap-4 justify-center">
                 <button
                     type="submit"
                     disabled={!((fileInputRef.current?.files && fileInputRef.current.files.length > 0) || hashInput.trim().length > 0)}
-                    className="inline-flex items-center justify-center rounded-md bg-orange-600 text-white hover:bg-orange-700 px-4 py-2 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-70 disabled:cursor-not-allowed"
-                    aria-disabled={!((fileInputRef.current?.files && fileInputRef.current.files.length > 0) || hashInput.trim().length > 0)}
+                    className="inline-flex items-center justify-center rounded-xl bg-primary text-white hover:bg-primary/90 px-8 py-3 text-sm font-bold shadow-lg shadow-primary/20 transition-all hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
-                    Submit
+                    Visualize Data
                 </button>
                 <button
                     type="button"
                     onClick={(e) => { onClear(); (e.currentTarget as HTMLButtonElement).blur(); }}
-                    className="inline-flex items-center justify-center rounded-md bg-gray-200 dark:bg-gray-800 px-4 py-2 text-gray-900 dark:text-gray-100 text-sm font-medium hover:bg-gray-300 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400"
+                    className="inline-flex items-center justify-center rounded-xl glass px-8 py-3 text-gray-900 dark:text-gray-100 text-sm font-bold transition-all hover:bg-white/20 active:scale-95"
                 >
                     Clear
                 </button>
