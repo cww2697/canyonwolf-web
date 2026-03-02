@@ -25,8 +25,9 @@ describe('RootLayout', () => {
   test('renders top navigation and wraps children', () => {
     renderBodyChildren(<div data-testid="content">Hello</div>);
 
-    // From TopNav contents
-    expect(screen.getByRole('link', { name: /canyon wolf/i })).toBeInTheDocument();
+    // From TopNav contents - Logo with "C" and "W" spans
+    expect(screen.getByText('C')).toBeInTheDocument();
+    expect(screen.getByText('W')).toBeInTheDocument();
     expect(screen.getByTestId('content')).toBeInTheDocument();
   });
 });

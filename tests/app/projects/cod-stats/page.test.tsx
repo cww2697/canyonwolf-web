@@ -23,16 +23,16 @@ import {describe, expect, test} from "vitest";
 }
 
 describe('COD Stats page', () => {
-  test('renders heading and CSV input with Submit/Clear buttons', () => {
+  test('renders heading and CSV input with Visualize/Clear buttons', () => {
     const { container } = render(<CodStatsPage />);
 
-    expect(screen.getByRole('heading', { level: 1, name: /call of duty statistics visualizer/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1, name: /cod stats/i })).toBeInTheDocument();
 
     // CSV input present (by id)
     expect(container.querySelector('#cod-csv')).toBeTruthy();
 
     // Submit and Clear controls
-    expect(screen.getByRole('button', { name: /submit/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /visualize data/i })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /clear/i })).toBeInTheDocument();
   });
 });

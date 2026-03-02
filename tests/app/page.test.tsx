@@ -15,15 +15,12 @@ describe('Home page', () => {
   test('renders main heading and github link', () => {
     render(<Home />);
 
-    // Main heading
+    // GitHub link in footer (RootLayout has it, but page.test.tsx only renders Home component)
+    // Actually, Home component no longer has the GitHub link directly.
+    // It's in the footer of RootLayout. 
+    // Let's check for the main heading and tagline which are in Home.
     expect(screen.getByRole('heading', { level: 1, name: /canyon wolf/i })).toBeInTheDocument();
-
-    // Tagline text snippet
     expect(screen.getByText(/Software Developer & Gaming Enthusiast/i)).toBeInTheDocument();
-
-    // GitHub link
-    const link = screen.getByRole('link', { name: /view the full repository on github/i });
-    expect(link).toHaveAttribute('href', 'https://github.com/cww2697/canyonwolf-web');
   });
 
   test('shows the portrait image', () => {
